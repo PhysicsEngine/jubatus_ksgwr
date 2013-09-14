@@ -24,9 +24,11 @@ http://blog.pinkpinkpink.net/2012/07/homebrew.html
 
 ### install jubatus
 
-$ brew tap jubatus/jubatus
-$ brew install --HEAD pficommon
-$ brew install jubatus
+$ brew tap jubatus/jubatus  
+$ brew install --HEAD pficommon  
+$ brew install jubatus --enable-re2  
+(オプションを指定しないとチュートリアルが動きません)  
+($ brew options jubatusで指定できるオプションを調べることができます)  
 
 https://github.com/jubatus/homebrew-jubatus
 
@@ -38,8 +40,8 @@ jubatusと打ってTabの補間が効けばパスが通っているのでイン�
 
 公式TutorialはPythonが例になっているためPython用のセッティングを行います
 
-$ sudo easy_install pip
-$ sudo pip install jubatus
+$ sudo easy_install pip  
+$ sudo pip install jubatus  
 
 http://jubat.us/ja/quickstart.html
 
@@ -49,22 +51,27 @@ http://jubat.us/ja/quickstart.html
 
 /usr/local/Cellar/jubatus にインストールされています。
 
-$ jubaclassifier -f /usr/local/Cellar/jubatus/0.4.2/share/jubatus/example/config/classifier/pa.json
 
-サーバーが立ち上がります。次はクライアントを立ち上げるため新規ターミナルを立ち上げましょう
 
 必要があればwgetもinstallしておきます
 
-$ brew install wget
+$ brew install wget  
 
-$ git clone https://github.com/jubatus/jubatus-tutorial-python.git
-$ cd jubatus-tutorial-python
-$ wget http://people.csail.mit.edu/jrennie/20Newsgroups/20news-bydate.tar.gz
-$ tar xvzf 20news-bydate.tar.gz
-$ jubaclassifier --configpath config.json
-I0914 20:31:18.261653 2061109600 server_util.cpp:71] load config from local file: config.json
+$ git clone https://github.com/jubatus/jubatus-tutorial-python.git  
+$ cd jubatus-tutorial-python  
+$ wget http://people.csail.mit.edu/jrennie/20Newsgroups/20news-bydate.tar.gz  
+$ tar xvzf 20news-bydate.tar.gz  
+$ jubaclassifier --configpath config.json  
+
+(以下は--enable-re2のオプションが指定されてないと出るエラーです)  
+I0914 20:31:18.261653 2061109600 server_util.cpp:71] load config from local file: config.json  
 F0914 20:31:18.264600 2061109600 server_util.hpp:144] Dynamic exception type: jubatus::fv_converter::converter_exception::what: unknown filter name: regexp
-(errorが出ます,ただ次のコマンドは一応実行できました)
-$ python tutorial.py
+
+サーバーが立ち上がります。次はクライアントを立ち上げるため新規ターミナルを立ち上げましょう  
+
+$ python tutorial.py  
+クライアントの実行です。同ディレクトリのデータをサーバに投げ結果を出力します  
+テスト結果 正解　実際の値　スコア  
+が出力されます。
 
 http://jubat.us/ja/tutorial.html
