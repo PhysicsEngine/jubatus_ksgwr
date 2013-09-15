@@ -70,6 +70,11 @@ public class Application extends Controller {
 			}
 		}
 
+		//候補なしなど
+		if(str==null){
+			str = "";
+		}
+
 		return ok(str);
 
 	}
