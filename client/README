@@ -1,0 +1,27 @@
+This is your new Play 2.1 application
+=====================================
+
+This file will be packaged with your application, when using `play dist`.
+
+tweet,replyの組について学習し、tweetからreplyを予測します。
+reply botとして活用します。
+
+Demo
+/assets/form.html
+
+API
+/predict_reply?message=tweet内容
+/add_train?message=tweet内容&reply=reply内容
+
+例
+「ただいま」=>「おかえり」の様なデータを学習することで
+「ただいまー」=>「おかえり」の様に返信することができます。
+
+仕様
+jubatusを使ってオンライン学習できます
+学習方法はパーセプトロン（ニューラルネット）
+素性は表層文字のbigramのみです。
+
+ToDo
+・学習データはfavoriteがついたreplyなど学習データの質という観点でも選別した方がよい
+・bigramのみでなくMA素性の取り入れや、数値情報など何かしらいれたい

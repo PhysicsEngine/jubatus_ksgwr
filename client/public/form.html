@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<script src="/assets/javascripts/jquery-1.9.0.min.js"></script>
+<script>
+$(function(){
+	$("#tweet").click(function(){
+		$.get('/predict_reply',{message:$('#message').val()},function(data){
+			$('#replyApi').text(data);
+		});
+	});
+
+	$('#form').submit(function(){
+		if($('#reply').val()=='') {
+			return false;
+		}
+	});
+});
+</script>
+<style>
+input[type=text]{
+  width:200px;
+}
+</style>
+<form id="form" action="/add_train">
+You:<input type="text" id="message" name="message" placeholder="Tweetを入力"><input type="button" id="tweet" value="tweet"><br>
+Bot:@you <span id="replyApi">?</span><br>
+<input type="text" id="reply" name="reply" placeholder="望むべき入力をしてください"><input type="submit" value="学習">
+</form>
